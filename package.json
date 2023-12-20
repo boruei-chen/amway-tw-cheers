@@ -1,0 +1,28 @@
+{
+  "name": "@boruei.chen/amway-tw-cheers",
+  "version": "1.0.0",
+  "description": "Amway TW Cheers template",
+  "homepage": "https://boruei-chen.github.io/amway-tw-cheers/",
+  "scripts": {
+    "start": "http-server & npm run compile-sass:watch",
+    "compile-sass:watch": "nodemon -e scss -x \"npm run build-css\"",
+    "build-css": "node-sass src/assets/sass/ -o src/assets/css/ && npx postcss src/assets/css --use autoprefixer -d src/assets/css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.16",
+    "http-server": "^14.1.1",
+    "node-sass": "^9.0.0",
+    "nodemon": "^3.0.2",
+    "postcss-cli": "^11.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boruei-chen/amway-tw-cheers.git"
+  },
+  "bugs": {
+    "url": "https://github.com/boruei-chen/amway-tw-cheers/issues"
+  },
+  "author": "BO-RUEI CHEN",
+  "license": "MIT"
+}
