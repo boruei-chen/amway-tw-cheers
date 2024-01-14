@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amway TW Cheers</title>
+  <!-- Lottie Player include -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Swiper include -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- CSS file include -->
   <link rel="stylesheet" href="src/assets/css/index.css">
   <!-- JavaScript file include -->
@@ -11,8 +16,10 @@
   <script type="text/javascript" src="src/app/features/main/main.js"></script>
 </head>
 <body>
-  <header include-html="src/app/shared/layouts/header/header.html"></header>
-  <main include-html="src/app/features/main/main.html"></main>
-  <footer include-html="src/app/shared/layouts/footer/footer.html"></footer>
+  <header class="header" include-html="src/app/shared/layouts/header/header.html"></header>
+  <div class="site-content">
+    <main include-html="src/app/features/main/main.html"></main>
+    <footer class="footer" include-html="src/app/shared/layouts/footer/footer.html"></footer>
+  </div>
 </body>
 </html>

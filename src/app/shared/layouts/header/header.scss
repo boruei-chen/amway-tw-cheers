@@ -1,0 +1,198 @@
+.header {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #DDDDDD;
+  padding: .75rem 0;
+  @include position(fixed, 0, null, null, 0, 1000, null);
+  .site-inner-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    hr {
+      width: 1px;
+      height: 44px;
+      background-color: #DDDDDD;
+      border: none;
+      margin: 0 1.25rem;
+    }
+  }
+  &__pc-nav {
+    margin-left: auto;
+  }
+  &__pc-nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  &__pc-nav-item,
+  &__mobile-nav-item {
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    &:nth-child(1) {
+      width: 184px;
+      height: 29px;
+      background-image: url(../../../../../src/assets/images/header-nav-item-1.svg);
+      &:hover {
+        background-image: url(../../../../../src/assets/images/header-nav-item-1-active.svg);
+      }
+    }
+    &:nth-child(2) {
+      width: 114px;
+      height: 29px;
+      background-image: url(../../../../../src/assets/images/header-nav-item-2.svg);
+      &:hover {
+        background-image: url(../../../../../src/assets/images/header-nav-item-2-active.svg);
+      }
+    }
+    &:nth-child(3) {
+      width: 127px;
+      height: 31px;
+      background-image: url(../../../../../src/assets/images/header-nav-item-3.svg);
+      &:hover {
+        background-image: url(../../../../../src/assets/images/header-nav-item-3-active.svg);
+      }
+    }
+    &--active {
+      &:nth-child(1) {
+        background-image: url(../../../../../src/assets/images/header-nav-item-1-active.svg);
+      }
+      &:nth-child(2) {
+        background-image: url(../../../../../src/assets/images/header-nav-item-2-active.svg);
+      }
+      &:nth-child(3) {
+        background-image: url(../../../../../src/assets/images/header-nav-item-3-active.svg);
+      }
+    }
+  }
+  &__pc-nav-item {
+    &:not(:last-child) {
+      margin-right: 2.5rem;
+    }
+  }
+  &__mobile-nav-item {
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+  }
+  &__mobile-menu {
+    width: 100%;
+    height: 100%;
+    background-color: #FDFFA5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    &--active {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__mobile-menu-open-btn {
+    width: 24px;
+    height: 20px;
+    background-color: transparent;
+    background-image: url(../../../../../src/assets/images/icon-burger.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    margin-right: .9375rem;
+    display: none;
+  }
+  &__mobile-menu-close-btn {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    background-image: url(../../../../../src/assets/images/icon-dark-cross.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: none;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+  }
+  &__mobile-nav {
+    position: relative;
+    &::after {
+      content: '';
+      width: 450px;
+      height: 414px;
+      background-image: url(../../../../../src/assets/images/mobile-menu-bg-organic-shape.svg);
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    &__logo {
+      hr {
+        height: 31.42px;
+        margin: 0 .75rem;
+      }
+    }
+    &__logo-cw {
+      width: 85px;
+    }
+    &__logo-cheers {
+      width: 70px;
+    }
+    &__logo-amway {
+      width: 92.13px;
+    }
+    &__pc-nav-item {
+      &:not(:last-child) {
+        margin-right: 1.875rem;
+      }
+      &:nth-child(1) {
+        width: 140px;
+        height: 22.06px;
+      }
+      &:nth-child(2) {
+        width: 86.71px;
+        height: 22.06px;
+      }
+      &:nth-child(3) {
+        width: 98.56px;
+        height: 24.06px;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &__logo {
+      hr {
+        height: 28px;
+      }
+    }
+    &__logo-cw {
+      width: 75.74px;
+    }
+    &__logo-cheers {
+      width: 62.37px;
+    }
+    &__logo-amway {
+      width: 82.1px;
+    }
+    &__pc-nav {
+      display: none;
+    }
+    &__mobile-menu-open-btn {
+      display: block;
+    }
+  }
+}

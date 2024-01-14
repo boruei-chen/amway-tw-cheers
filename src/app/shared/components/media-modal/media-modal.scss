@@ -1,0 +1,85 @@
+.media-modal {
+  width: 100%;
+  height: 100%;
+  background-color: #FDFFA5;
+  background-image: url(../../../../../src/assets/images/illus-potted-plant.svg);
+  background-size: 159px 319px;
+  background-position: right -2.5rem bottom 1.25rem;
+  background-repeat: no-repeat;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  display: none;
+  &--active {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  &__close-btn {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    button {
+      width: 30px;
+      height: 30px;
+      background-color: #2C2C2C;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      &::after {
+        content: '';
+        width: 15px;
+        height: 15px;
+        background-image: url(../../../../../src/assets/images/icon-light-cross.svg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+    span {
+      color: #2C2C2C;
+      font-weight: 300;
+      line-height: 1.5;
+      margin-left: .625rem;
+    }
+  }
+  &__container {
+    width: 1080px;
+    margin: 0 auto;
+  }
+  &__body {
+    margin-top: .625rem;
+  }
+  &__wrapper {
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    iframe {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    &__container {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    &__container {
+      width: calc(100% - 30px);
+    }
+  }
+}

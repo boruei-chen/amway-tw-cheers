@@ -1,1 +1,28 @@
-Header
+<div class="site-container">
+  <div class="site-inner-container">
+    <button type="button" class="header__mobile-menu-open-btn" onclick="toggleMobileMenu(true)"></button>
+    <div class="header__logo">
+      <img src="src/assets/images/logo-cw.svg" class="header__logo-cw" alt="Amway cw">
+      <img src="src/assets/images/logo-cheers.svg" class="header__logo-cheers" alt="Amway cheers">
+      <hr>
+      <img src="src/assets/images/logo-amway.svg" class="header__logo-amway" alt="Amway">
+    </div>
+    <nav class="header__pc-nav">
+      <ul class="header__pc-nav-list">
+        <li class="header__pc-nav-item" data-target-section="cogitation" onclick="onHeaderNav(event)"></li>
+        <li class="header__pc-nav-item" data-target-section="join" onclick="onHeaderNav(event)"></li>
+        <li class="header__pc-nav-item" data-target-section="cherish" onclick="onHeaderNav(event)"></li>
+      </ul>
+    </nav>
+    <div class="header__mobile-menu">
+      <button type="button" class="header__mobile-menu-close-btn" onclick="toggleMobileMenu(false)"></button>
+      <nav class="header__mobile-nav">
+        <ul class="header__mobile-nav-list">
+          <li class="header__mobile-nav-item" data-target-section="cogitation" onclick="onHeaderMobileNav(event)"></li>
+          <li class="header__mobile-nav-item" data-target-section="join" onclick="onHeaderMobileNav(event)"></li>
+          <li class="header__mobile-nav-item" data-target-section="cherish" onclick="onHeaderMobileNav(event)"></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
