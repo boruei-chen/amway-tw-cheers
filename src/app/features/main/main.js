@@ -1,6 +1,7 @@
 function initialAppScrollEventListener () {
   document.addEventListener('scroll', function () {
     triggerTargetSectionAnimation();
+    handleScrollToTopButtonVisible();
   });
 }
 
@@ -39,6 +40,16 @@ function initialGallery (id) {
       el: '.swiper-pagination'
     }
   });
+}
+
+function handleScrollToTopButtonVisible () {
+  const btnElem = document.querySelector('.scroll-to-top-btn');
+  const secondSectionOffsetTop = document.querySelector('.cogitation').offsetTop;
+  if (window.scrollY >= secondSectionOffsetTop) {
+    btnElem.classList.add('scroll-to-top-btn--active');
+  } else {
+    btnElem.classList.remove('scroll-to-top-btn--active');
+  }
 }
 
 function setHeaderNavigationItemActive () {
@@ -217,6 +228,10 @@ function onHeaderNav (event) {
 function onHeaderMobileNav (event) {
   scrollToTargetSection(event, 'mobile');
   toggleMobileMenu(false);
+}
+
+function onScrollToTop () {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 document.addEventListener('DOMContentLoaded', function () {
