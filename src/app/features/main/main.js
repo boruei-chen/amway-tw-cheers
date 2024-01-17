@@ -24,8 +24,8 @@ function initialMarquee (id, speed) {
   });
 }
 
-function initialGallery (id) {
-  new Swiper(`#${id}`, {
+function initialCherishSectionMediaGallery (subSectionIndex, mediaGalleryId, mediaInfoList) {
+  new Swiper(`#${mediaGalleryId}`, {
     loop: true,
     effect: 'fade',
     speed: 1000,
@@ -38,8 +38,52 @@ function initialGallery (id) {
     },
     pagination: {
       el: '.swiper-pagination'
+    },
+    on: {
+      realIndexChange: (swiper) => {
+        const currentMediaInfo = mediaInfoList[swiper.realIndex];
+        const targetSubSectionElem = document.querySelectorAll('.cherish__section')[subSectionIndex];
+        const targetMediaDescElem = targetSubSectionElem.querySelector('.cherish__media-desc p');
+        const targetMediaBtnElem = targetSubSectionElem.querySelector('.cherish__media-btn');
+        targetMediaDescElem.innerHTML = currentMediaInfo.desc;
+        targetMediaBtnElem.setAttribute('href', currentMediaInfo.url);
+      }
     }
   });
+}
+
+function initialCherishSection1stSubSectionMediaGallery () {
+  const mediaInfoList = [
+    { desc: '安麗全球核心高層齊聚台灣，推廣全方位健康幸福理念', url: 'https://www.cw.com.tw/article/5127971' },
+    { desc: '安麗推廣大健康永續理念 致力成為地球永續推手', url: 'https://www.cw.com.tw/article/5126778' }
+  ];
+  initialCherishSectionMediaGallery(0, 'cherish-section-subsection-1-media-gallery', mediaInfoList);
+}
+
+function initialCherishSection2ndSubSectionMediaGallery () {
+  const mediaInfoList = [
+    { desc: '我適合創業嗎？一人如何創業？想清楚３件事，到５大平台找資源', url: 'https://www.cheers.com.tw/article/article.action?id=5099062' },
+    { desc: '化興趣為事業其實並不難！安麗的堅持與熱情，感動台灣霹靂舞之光陳柏均與極限超馬好手陳彥博', url: 'https://www.cw.com.tw/article/5120359' },
+    { desc: '輕鬆創玩你的事業', url: 'https://web.amway.com.tw/business/business/?utm_source=OFFICIAL_SITE&utm_medium=bo_index_intro&utm_content=business' }
+  ];
+  initialCherishSectionMediaGallery(1, 'cherish-section-subsection-2-media-gallery', mediaInfoList);
+}
+
+function initialCherishSection3rdSubSectionMediaGallery () {
+  const mediaInfoList = [
+    { desc: '中年轉職：５個關鍵思維，幫你提高職場身價', url: 'https://www.cheers.com.tw/article/article.action?id=5101197' },
+    { desc: '退休時太太過世，連水餃都不會煮！７９歲前外商主管李益恭：白領如何找新工作？販賣２０％的專業就好', url: 'https://www.cw.com.tw/aging/article/5126920' }
+  ];
+  initialCherishSectionMediaGallery(2, 'cherish-section-subsection-3-media-gallery', mediaInfoList);
+}
+
+function initialCherishSection4thSubSectionMediaGallery () {
+  const mediaInfoList = [
+    { desc: '工作與自由可兼得？開創「斜槓」人生必備的４大能力', url: 'https://www.cheers.com.tw/article/article.action?id=5101445' },
+    { desc: '彈性多元選擇 安麗提供新世代展現的舞台！', url: 'https://www.cw.com.tw/article/5121856' },
+    { desc: '數位支持 助你成功創業、持續成長', url: 'https://web.amway.com.tw/business/business-tools/?utm_source=OFFICIAL_SITE&utm_medium=bo_index_intro&utm_content=tool' }
+  ];
+  initialCherishSectionMediaGallery(3, 'cherish-section-subsection-4-media-gallery', mediaInfoList);
 }
 
 function handleScrollToTopButtonVisible () {
@@ -74,14 +118,14 @@ function setHeaderNavigationItemActive () {
   }
 }
 
-function scrollToTargetSection (event, device) {
+function scrollToTargetSection (device, navElem) {
   const headerElem = document.querySelector('header');
-  const sectionElem = document.querySelector(`.${event.target.dataset.targetSection}`);
+  const sectionElem = document.querySelector(`.${navElem.dataset.targetSection}`);
   if (headerElem && sectionElem) {
     const sectionElemOffsetTop = sectionElem.offsetTop - headerElem.clientHeight;
-    const siblingsElems = event.target.parentElement.children;
-    Array.from(siblingsElems).forEach((elem) => elem.classList.contains(`header__${device}-nav-item--active`) && elem.classList.remove(`header__${device}-nav-item--active`));
-    event.target.classList.add(`header__${device}-nav-item--active`);
+    const navSiblingsElems = navElem.parentElement.children;
+    Array.from(navSiblingsElems).forEach((elem) => elem.classList.contains(`header__${device}-nav-item--active`) && elem.classList.remove(`header__${device}-nav-item--active`));
+    navElem.classList.add(`header__${device}-nav-item--active`);
     window.scrollTo({ top: sectionElemOffsetTop, behavior: 'smooth' });
   }
 }
@@ -222,11 +266,11 @@ function closeMediaModal () {
 }
 
 function onHeaderNav (event) {
-  scrollToTargetSection(event, 'pc');
+  scrollToTargetSection('pc', event.currentTarget);
 }
 
 function onHeaderMobileNav (event) {
-  scrollToTargetSection(event, 'mobile');
+  scrollToTargetSection('mobile', event.currentTarget);
   toggleMobileMenu(false);
 }
 
@@ -245,9 +289,9 @@ document.addEventListener('DOMContentLoaded', function () {
     initialMarquee('cherish-section-subsection-2-marquee', 3000);
     initialMarquee('cherish-section-subsection-3-marquee', 3000);
     initialMarquee('cherish-section-subsection-4-marquee', 3000);
-    initialGallery('cherish-section-subsection-1-media-gallery');
-    initialGallery('cherish-section-subsection-2-media-gallery');
-    initialGallery('cherish-section-subsection-3-media-gallery');
-    initialGallery('cherish-section-subsection-4-media-gallery');
+    initialCherishSection1stSubSectionMediaGallery();
+    initialCherishSection2ndSubSectionMediaGallery();
+    initialCherishSection3rdSubSectionMediaGallery();
+    initialCherishSection4thSubSectionMediaGallery();
   });
 });
