@@ -145,8 +145,8 @@
           </div>
         </div>
         <div class="join__media-list">
-          <div class="join__media-item">
-            <div class="join__media-item-cover" onclick="openMediaModal('https://www.youtube.com/embed/jXpTyXPr-50?si=phl_vkHWI9H871YI')">
+          <div class="join__media-item" data-media-source-url="https://www.youtube.com/embed/Isg3jLC30kI?si=L3VSPij4lsqh9_AN">
+            <div class="join__media-item-cover" onclick="openMediaModal(event, 'join')">
               <div class="join__media-play-icon">
                 <img src="src/assets/images/icon-player-off.svg" alt="icon-player-off">
                 <img src="src/assets/images/icon-player-on.svg" alt="icon-player-on">
@@ -158,8 +158,8 @@
             </div>
             <p class="join__media-item-desc">關懷永續，節能環保，帶來更好、更健康的生活</p>
           </div>
-          <div class="join__media-item">
-            <div class="join__media-item-cover" onclick="openMediaModal('https://www.youtube.com/embed/lpAD_Y9A53g?si=8Z12915Fk5BNTi6y')">
+          <div class="join__media-item" data-media-source-url="https://www.youtube.com/embed/8bhSmkMvtnQ?si=m0LZV6RIxSoPuEy3">
+            <div class="join__media-item-cover" onclick="openMediaModal(event, 'join')">
               <div class="join__media-play-icon">
                 <img src="src/assets/images/icon-player-off.svg" alt="icon-player-off">
                 <img src="src/assets/images/icon-player-on.svg" alt="icon-player-on">
@@ -171,8 +171,8 @@
             </div>
             <p class="join__media-item-desc">全職投入或是 1 + 1 副業，自由彈性創造更多收入</p>
           </div>
-          <div class="join__media-item">
-            <div class="join__media-item-cover">
+          <div class="join__media-item" data-media-source-url="https://www.youtube.com/embed/gO9ErtFLf5w?si=ZMilKpsA7cD6Fjpx">
+            <div class="join__media-item-cover" onclick="openMediaModal(event, 'join')">
               <div class="join__media-play-icon">
                 <img src="src/assets/images/icon-player-off.svg" alt="icon-player-off">
                 <img src="src/assets/images/icon-player-on.svg" alt="icon-player-on">
@@ -239,12 +239,14 @@
                 只要擁有獨到眼光，隨時都能自帶光芒閃閃發亮
               </p>
             </div>
-            <div class="podcast__media">
-              <div class="podcast__media-play-icon">
-                <img src="src/assets/images/icon-player-off.svg" alt="icon-player-off">
-                <img src="src/assets/images/icon-player-on.svg" alt="icon-player-on">
+            <div class="podcast__media-item" data-media-source-url="">
+              <div class="podcast__media-item-cover" onclick="openMediaModal(event, 'podcast')">
+                <div class="podcast__media-play-icon">
+                  <img src="src/assets/images/icon-player-off.svg" alt="icon-player-off">
+                  <img src="src/assets/images/icon-player-on.svg" alt="icon-player-on">
+                </div>
+                <img src="src/assets/images/main-page-podcast-section-media-cover.svg" alt="讓舞台上的聚光燈打向你，因為你夠耀眼">
               </div>
-              <img src="src/assets/images/main-page-podcast-section-media-cover.svg" alt="讓舞台上的聚光燈打向你，因為你夠耀眼">
             </div>
             <div class="podcast__illus-anim">
               <lottie-player src="src/assets/animations/ae-yoga-girl.json" class="podcast__lottie-player" background="transparent" speed="1" direction="1" mode="normal" loop autoplay></lottie-player>
@@ -569,6 +571,8 @@
       </div>
     </div>
   </section>
+  <!-- Coming Soon Modal -->
+  <div class="coming-soon-modal" include-html="src/app/shared/components/coming-soon-modal/coming-soon-modal.html"></div>
   <!-- Media Modal -->
   <div class="media-modal" include-html="src/app/shared/components/media-modal/media-modal.html"></div>
 </div>

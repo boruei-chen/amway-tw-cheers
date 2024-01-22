@@ -996,9 +996,11 @@
         }
       }
     }
-    &__media {
+    &__media-item {
       width: 380px;
       margin-left: 6.25rem;
+    }
+    &__media-item-cover {
       position: relative;
       z-index: 1;
       cursor: pointer;
@@ -1032,8 +1034,8 @@
       &--active {
         &::after {
           transform: translate(0, 0);
-          animation: podcastMediaShadowFadeIn 1s ease;
-          @keyframes podcastMediaShadowFadeIn {
+          animation: podcastMediaItemCoverShadowFadeIn 1s ease;
+          @keyframes podcastMediaItemCoverShadowFadeIn {
             from {
               opacity: 0;
               visibility: hidden;
@@ -1239,7 +1241,7 @@
       }
     }
     @media screen and (max-width: 1200px) {
-      &__media {
+      &__media-item {
         width: 32.47%;
         margin-left: 8.54%;
       }
@@ -1251,7 +1253,7 @@
       &__iframe {
         width: 450px;
       }
-      &__media {
+      &__media-item {
         margin-left: 5%;
       }
     }
@@ -1296,7 +1298,7 @@
           }
         }
       }
-      &__media {
+      &__media-item {
         width: 100%;
         margin: 35% 0 0 0;
       }

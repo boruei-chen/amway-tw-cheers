@@ -1,7 +1,7 @@
 function initialAppScrollEventListener () {
   document.addEventListener('scroll', function () {
     triggerTargetSectionAnimation();
-    handleScrollToTopButtonVisible();
+    toggleScrollToTopButtonVisible();
   });
 }
 
@@ -86,7 +86,17 @@ function initialCherishSection4thSubSectionMediaGallery () {
   initialCherishSectionMediaGallery(3, 'cherish-section-subsection-4-media-gallery', mediaInfoList);
 }
 
-function handleScrollToTopButtonVisible () {
+function toggleLoadingMaskVisible (visible) {
+  const loadingMaskElem = document.querySelector('.loading-mask');
+  if (visible) {
+    loadingMaskElem.classList.add('loading-mask--active');
+  } else {
+    loadingMaskElem.classList.add('loading-mask--anim');
+    setTimeout(() => { loadingMaskElem.classList.remove('loading-mask--active'); }, 1500);
+  }
+}
+
+function toggleScrollToTopButtonVisible () {
   const btnElem = document.querySelector('.scroll-to-top-btn');
   const secondSectionOffsetTop = document.querySelector('.cogitation').offsetTop;
   if (window.scrollY >= secondSectionOffsetTop) {
@@ -194,7 +204,7 @@ function triggerTargetSectionAnimation () {
     const titleElemTopPos = titleElem.getBoundingClientRect().top + window.scrollY;
     const descElem = document.querySelector('.podcast__desc');
     const descElemTopPos = descElem.getBoundingClientRect().top + window.scrollY;
-    const mediaElem = document.querySelector('.podcast__media');
+    const mediaElem = document.querySelector('.podcast__media-item-cover');
     const mediaElemTopPos = mediaElem.getBoundingClientRect().top + window.scrollY;
     if (windowBottomPos >= titleElemTopPos && !titleElem.classList.contains('podcast__title--active')) {
       titleElem.classList.add('podcast__title--active');
@@ -202,8 +212,8 @@ function triggerTargetSectionAnimation () {
     if (windowBottomPos >= descElemTopPos && !descElem.classList.contains('podcast__desc--active')) {
       descElem.classList.add('podcast__desc--active');
     }
-    if (windowBottomPos >= mediaElemTopPos && !mediaElem.classList.contains('podcast__media--active')) {
-      mediaElem.classList.add('podcast__media--active');
+    if (windowBottomPos >= mediaElemTopPos && !mediaElem.classList.contains('podcast__media-item-cover--active')) {
+      mediaElem.classList.add('podcast__media-item-cover--active');
     }
   }
   if (previewedSectionNameList.includes('cherish')) {
@@ -243,14 +253,20 @@ function toggleMobileMenu (active) {
   }
 }
 
-function openMediaModal (sourceUrl) {
+function openMediaModal (event, sectionName) {
   const bodyElem = document.querySelector('body');
+  const mediaItemElem = event.target.closest(`.${sectionName}__media-item`);
   const mediaModalElem = document.querySelector('.media-modal');
-  if (bodyElem && mediaModalElem) {
+  if (bodyElem && mediaItemElem && mediaModalElem) {
     const iframeElem = mediaModalElem.querySelector('iframe');
-    if (iframeElem) iframeElem.setAttribute('src', sourceUrl);
-    bodyElem.classList.add('scroll-lockup');
-    mediaModalElem.classList.add('media-modal--active');
+    const sourceUrl = mediaItemElem.dataset.mediaSourceUrl;
+    if (iframeElem && sourceUrl) {
+      iframeElem.setAttribute('src', sourceUrl);
+      bodyElem.classList.add('scroll-lockup');
+      mediaModalElem.classList.add('media-modal--active');
+    } else {
+      openComingSoonModal();
+    }
   }
 }
 
@@ -262,6 +278,24 @@ function closeMediaModal () {
     if (iframeElem) iframeElem.removeAttribute('src');
     bodyElem.classList.remove('scroll-lockup');
     mediaModalElem.classList.remove('media-modal--active');
+  }
+}
+
+function openComingSoonModal () {
+  const bodyElem = document.querySelector('body');
+  const comingSoonModalElem = document.querySelector('.coming-soon-modal');
+  if (bodyElem && comingSoonModalElem) {
+    bodyElem.classList.add('scroll-lockup');
+    comingSoonModalElem.classList.add('coming-soon-modal--active');
+  }
+}
+
+function closeComingSoonModal () {
+  const bodyElem = document.querySelector('body');
+  const comingSoonModalElem = document.querySelector('.coming-soon-modal');
+  if (bodyElem && comingSoonModalElem) {
+    bodyElem.classList.remove('scroll-lockup');
+    comingSoonModalElem.classList.remove('coming-soon-modal--active');
   }
 }
 
@@ -279,6 +313,7 @@ function onScrollToTop () {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  toggleLoadingMaskVisible(true);
   includeHTML(function () {
     triggerTargetSectionAnimation();
     initialAppScrollEventListener();
@@ -294,4 +329,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initialCherishSection3rdSubSectionMediaGallery();
     initialCherishSection4thSubSectionMediaGallery();
   });
+});
+
+window.addEventListener('load', function () {
+  toggleLoadingMaskVisible(false);
 });
