@@ -3,7 +3,10 @@
   background-color: #FFFFFF;
   border-bottom: 1px solid #DDDDDD;
   padding: .75rem 0;
-  @include position(fixed, 0, null, null, 0, 1000, null);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   .site-inner-container {
     display: flex;
     flex-direction: row;
@@ -20,6 +23,15 @@
       border: none;
       margin: 0 1.25rem;
     }
+  }
+  &__logo-cw {
+    width: 119px;;
+  }
+  &__logo-cheers {
+    width: 98px;
+  }
+  &__logo-amway {
+    width: 129px;
   }
   &__pc-nav {
     margin-left: auto;
@@ -105,7 +117,7 @@
     width: 24px;
     height: 20px;
     background-color: transparent;
-    background-image: url(../../../../../src/assets/images/icon-burger.svg);
+    background-image: url(../../../../../src/assets/images/icon-burger.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -117,7 +129,7 @@
     width: 18px;
     height: 18px;
     background-color: transparent;
-    background-image: url(../../../../../src/assets/images/icon-dark-cross.svg);
+    background-image: url(../../../../../src/assets/images/icon-dark-cross.png);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -132,7 +144,7 @@
       content: '';
       width: 450px;
       height: 414px;
-      background-image: url(../../../../../src/assets/images/mobile-menu-bg-organic-shape.svg);
+      background-image: url(../../../../../src/assets/images/mobile-menu-bg-organic-shape.png);
       background-size: contain;
       background-position: center;
       background-repeat: no-repeat;
